@@ -7,11 +7,19 @@ const WeatherData = require('./model/weathermodel'); // Import your Mongoose mod
 const connectDB = require('./config/db');
 const cors = require('cors');
 app.use(bodyParser.json());
+const path=require('path');
 
 // Set up MongoDB connection
 
 connectDB();
 app.use(cors());
+const __dirname1 = path.resolve();
+
+app.use(express.static(path.join(__dirname1, '/client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname1, 'client', 'dist', 'index.html'));
+})
 
 // Create an API endpoint to save weather data
 app.post('/saveWeatherData', async (req, res) => {
