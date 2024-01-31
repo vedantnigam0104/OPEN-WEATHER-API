@@ -13,16 +13,9 @@ const path=require('path');
 
 connectDB();
 app.use(cors());
-const __dirname1 = path.resolve();
-
-app.use(express.static(path.join(__dirname1, '/client/dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname1, 'client', 'dist', 'index.html'));
-})
 
 // Create an API endpoint to save weather data
-app.post('/saveWeatherData', async (req, res) => {
+app.post('https://open-weather-api-pi.vercel.app/saveWeatherData', async (req, res) => {
   try {
     console.log('Received data:', req.body);
     
