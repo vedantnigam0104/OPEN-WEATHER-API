@@ -15,7 +15,7 @@ connectDB();
 app.use(cors());
 
 // Create an API endpoint to save weather data
-app.post('https://open-weather-api-pi.vercel.app/saveWeatherData', async (req, res) => {
+app.post('/saveWeatherData', async (req, res) => {
   try {
     console.log('Received data:', req.body);
     
